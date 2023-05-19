@@ -1,0 +1,2399 @@
+{
+  "Config": {
+    "TestGuru" : { 
+     "mode" : "google",
+     "task" : "explain",
+     "default_args" : {"args.config" : "../config.json" , "args.src" : "/home/rohit/src/decision_tree.py"}
+     }, 
+    "DQN": {
+      "annealing_steps": 1000,
+      "decay": true,
+      "end_epsilon": 0.1,
+      "start_epsilon": 1
+    },
+    "one_hot_columns": [
+      [
+        "wrlvl_half_wica",
+        "wrlvl_full_wica"
+      ],
+      [
+        "rand_tck_duty",
+        "rand_twpre_twpst",
+        "rand_dqss",
+        "rand_glitch",
+        "rand_dq_toggle",
+        "rand_dqs_t_toggle",
+        "rand_dqs_c_toggle"
+      ]
+    ],
+    "HParams": {
+      "hidden_units": [
+        128,
+        64
+      ],
+      "loss": "mean_squared_error",
+      "optimizer": "Adam"
+    },
+    "RewardPredictor": {
+      "I/O": "output",
+      "ensemble_size": 2,
+      "experiment_number": 1,
+      "experiment_type": "y52k_Jul1_DUT",
+      "incremental": false,
+      "knob_values": [],
+      "output_metrics": [
+        "Functional_Sections cov",
+        "Functional_Sections delta cov",
+        "1_Deep_Commands cov",
+        "1_Deep_Commands delta cov",
+        "2_Deep_Commands_Same_Rank cov",
+        "2_Deep_Commands_Same_Rank delta cov",
+        "DDR5_coverage delta cov",
+        "simtime",
+        "run_time",
+        "turnaround_time",
+        "pertest DDR5_vplan cov"
+      ],
+      "knobs": [
+        {
+          "label": "auto_write_error_injection",
+          "name": "auto_write_error_injection",
+          "default": "0",
+          "key": "RewardPredictor.knob_values.auto_write_error_injection",
+          "type": "boolean",
+          "values": [
+            "0"
+          ]
+        },
+        {
+          "label": "rand_dq_toggle",
+          "name": "rand_dq_toggle",
+          "default": "1",
+          "key": "RewardPredictor.knob_values.rand_dq_toggle",
+          "type": "boolean",
+          "values": [
+            "1",
+            "0"
+          ]
+        },
+        {
+          "label": "rand_dqs_c_toggle",
+          "name": "rand_dqs_c_toggle",
+          "default": "1",
+          "key": "RewardPredictor.knob_values.rand_dqs_c_toggle",
+          "type": "boolean",
+          "values": [
+            "1",
+            "0"
+          ]
+        },
+        {
+          "label": "rand_dqs_t_toggle",
+          "name": "rand_dqs_t_toggle",
+          "default": "1",
+          "key": "RewardPredictor.knob_values.rand_dqs_t_toggle",
+          "type": "boolean",
+          "values": [
+            "1",
+            "0"
+          ]
+        },
+        {
+          "label": "rand_dqsh_dqsl",
+          "name": "rand_dqsh_dqsl",
+          "default": "1",
+          "key": "RewardPredictor.knob_values.rand_dqsh_dqsl",
+          "type": "boolean",
+          "values": [
+            "1",
+            "0"
+          ]
+        },
+        {
+          "label": "rand_dqss",
+          "name": "rand_dqss",
+          "default": "1",
+          "key": "RewardPredictor.knob_values.rand_dqss",
+          "type": "boolean",
+          "values": [
+            "1",
+            "0"
+          ]
+        },
+        {
+          "label": "rand_glitch",
+          "name": "rand_glitch",
+          "default": "0",
+          "key": "RewardPredictor.knob_values.rand_glitch",
+          "type": "enum",
+          "values": [
+            "0"
+          ]
+        },
+        {
+          "label": "rand_illegal_wr",
+          "name": "rand_illegal_wr",
+          "default": "1",
+          "key": "RewardPredictor.knob_values.rand_illegal_wr",
+          "type": "boolean",
+          "values": [
+            "1",
+            "0"
+          ]
+        },
+        {
+          "label": "rand_tck_duty",
+          "name": "rand_tck_duty",
+          "default": "0",
+          "key": "RewardPredictor.knob_values.rand_tck_duty",
+          "type": "enum",
+          "values": [
+            "0"
+          ]
+        },
+        {
+          "label": "rand_twpre_twpst",
+          "name": "rand_twpre_twpst",
+          "default": "0",
+          "key": "RewardPredictor.knob_values.rand_twpre_twpst",
+          "type": "enum",
+          "values": [
+            "0"
+          ]
+        },
+        {
+          "label": "rf_cmds",
+          "name": "rf_cmds",
+          "default": "10000",
+          "key": "RewardPredictor.knob_values.rf_cmds",
+          "type": "const",
+          "values": [
+            "10000",
+            "0"
+          ]
+        },
+        {
+          "label": "speed_grades",
+          "name": "speed_grades",
+          "default": "1980|3200|3600|4000|4400|4800|5200|5600|6000|6400|6800|7200",
+          "key": "RewardPredictor.knob_values.speed_grades",
+          "type": "const",
+          "values": [
+            "1980|3200|3600|4000|4400|4800|5200|5600|6000|6400|6800|7200",
+            "0"
+          ]
+        },
+        {
+          "label": "weighting",
+          "name": "weighting",
+          "default": "burst",
+          "key": "RewardPredictor.knob_values.weighting",
+          "type": "enum",
+          "values": [
+            "burst",
+            "0",
+            "reads_writes_repair_rand_max",
+            "burst_repair_rand_max",
+            "reads_writes",
+            "repair_rand_max"
+          ]
+        },
+        {
+          "label": "wrlvl_full_wica",
+          "name": "wrlvl_full_wica",
+          "default": "0",
+          "key": "RewardPredictor.knob_values.wrlvl_full_wica",
+          "type": "enum",
+          "values": [
+            "0"
+          ]
+        },
+        {
+          "label": "wrlvl_half_wica",
+          "name": "wrlvl_half_wica",
+          "default": "1",
+          "key": "RewardPredictor.knob_values.wrlvl_half_wica",
+          "type": "boolean",
+          "values": [
+            "1",
+            "0"
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CA_THIS_GROUP_IDLE",
+          "name": "pat_wgt_RTT_CA_THIS_GROUP_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CA_THIS_GROUP_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WR_PARTIAL_NT_MPSM_IDLE",
+          "name": "pat_wgt_WR_PARTIAL_NT_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WR_PARTIAL_NT_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_TEMP_MPSM_IDLE",
+          "name": "pat_wgt_CHANGE_TEMP_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_TEMP_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRA_NT_PD_ODT",
+          "name": "pat_wgt_WRA_NT_PD_ODT",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRA_NT_PD_ODT",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DQS_OSC_STOP_IDLE",
+          "name": "pat_wgt_DQS_OSC_STOP_IDLE",
+          "default": "20.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DQS_OSC_STOP_IDLE",
+          "type": "enum",
+          "values": [
+            "20.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ZQ_LATCH_ACTIVE",
+          "name": "pat_wgt_ZQ_LATCH_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ZQ_LATCH_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CA_TRAIN_IDLE",
+          "name": "pat_wgt_CA_TRAIN_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CA_TRAIN_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PWRCYCLE_SEQ_ACTIVE_PD",
+          "name": "pat_wgt_PWRCYCLE_SEQ_ACTIVE_PD",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PWRCYCLE_SEQ_ACTIVE_PD",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_REFM_SB_ACTIVE",
+          "name": "pat_wgt_REFM_SB_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_REFM_SB_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ENTER_PDA_ENUM_PROG_IDLE",
+          "name": "pat_wgt_ENTER_PDA_ENUM_PROG_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ENTER_PDA_ENUM_PROG_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PDX_PD_ODT",
+          "name": "pat_wgt_PDX_PD_ODT",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PDX_PD_ODT",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRR_NT_ACTIVE",
+          "name": "pat_wgt_MRR_NT_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRR_NT_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SPPR_IDLE",
+          "name": "pat_wgt_SPPR_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SPPR_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CK_OTHER_GROUP_MPSM_IDLE",
+          "name": "pat_wgt_RTT_CK_OTHER_GROUP_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CK_OTHER_GROUP_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_REFM_AB_ACTIVE",
+          "name": "pat_wgt_REFM_AB_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_REFM_AB_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRP_ACTIVE",
+          "name": "pat_wgt_WRP_ACTIVE",
+          "default": "20.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRP_ACTIVE",
+          "type": "enum",
+          "values": [
+            "20.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RD_NT_ACTIVE",
+          "name": "pat_wgt_RD_NT_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RD_NT_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WR_NT_MPSM_IDLE",
+          "name": "pat_wgt_WR_NT_MPSM_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WR_NT_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRR_NT_MPSM_IDLE",
+          "name": "pat_wgt_MRR_NT_MPSM_IDLE",
+          "default": "5.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRR_NT_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "5.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PDX_ACTIVE_PD",
+          "name": "pat_wgt_PDX_ACTIVE_PD",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PDX_ACTIVE_PD",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PWRCYCLE_SEQ_SELF_REFRESH",
+          "name": "pat_wgt_PWRCYCLE_SEQ_SELF_REFRESH",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PWRCYCLE_SEQ_SELF_REFRESH",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RESET_SEQ_ACTIVE",
+          "name": "pat_wgt_RESET_SEQ_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RESET_SEQ_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WR_PARTIAL_NT_IDLE",
+          "name": "pat_wgt_WR_PARTIAL_NT_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WR_PARTIAL_NT_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RESET_SEQ_PD_ODT",
+          "name": "pat_wgt_RESET_SEQ_PD_ODT",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RESET_SEQ_PD_ODT",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ILLEGAL_ROW_SEQ_ACTIVE",
+          "name": "pat_wgt_ILLEGAL_ROW_SEQ_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ILLEGAL_ROW_SEQ_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MBIST_IDLE",
+          "name": "pat_wgt_MBIST_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MBIST_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SET_1N_MODE_IDLE",
+          "name": "pat_wgt_SET_1N_MODE_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SET_1N_MODE_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PDE_MPSM_IDLE",
+          "name": "pat_wgt_PDE_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PDE_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CK_THIS_GROUP_ACTIVE",
+          "name": "pat_wgt_RTT_CK_THIS_GROUP_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CK_THIS_GROUP_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRA_NT_IDLE",
+          "name": "pat_wgt_WRA_NT_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRA_NT_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_TDLLK_TCCDL_MPSM_IDLE",
+          "name": "pat_wgt_TDLLK_TCCDL_MPSM_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_TDLLK_TCCDL_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DES_IDLE",
+          "name": "pat_wgt_DES_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DES_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RDA_ACTIVE",
+          "name": "pat_wgt_RDA_ACTIVE",
+          "default": "5.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RDA_ACTIVE",
+          "type": "enum",
+          "values": [
+            "5.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_VREF_CS_ACTIVE",
+          "name": "pat_wgt_VREF_CS_ACTIVE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_VREF_CS_ACTIVE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PWRCYCLE_SEQ_MPSM_IDLE",
+          "name": "pat_wgt_PWRCYCLE_SEQ_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PWRCYCLE_SEQ_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CS_OTHER_GROUP_MPSM_IDLE",
+          "name": "pat_wgt_RTT_CS_OTHER_GROUP_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CS_OTHER_GROUP_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SET_DQS_RTT_PARK_MPSM_IDLE",
+          "name": "pat_wgt_SET_DQS_RTT_PARK_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SET_DQS_RTT_PARK_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RD_NT_MPSM_IDLE",
+          "name": "pat_wgt_RD_NT_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RD_NT_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SRE_IDLE",
+          "name": "pat_wgt_SRE_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SRE_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_TEMP_PDA_ENUM",
+          "name": "pat_wgt_CHANGE_TEMP_PDA_ENUM",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_TEMP_PDA_ENUM",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRW_CANCEL_ACTIVE",
+          "name": "pat_wgt_MRW_CANCEL_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRW_CANCEL_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_CAI_MIR_MPSM_IDLE",
+          "name": "pat_wgt_CHANGE_CAI_MIR_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_CAI_MIR_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CA_OTHER_GROUP_ACTIVE",
+          "name": "pat_wgt_RTT_CA_OTHER_GROUP_ACTIVE",
+          "default": "15.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CA_OTHER_GROUP_ACTIVE",
+          "type": "enum",
+          "values": [
+            "15.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_EXIT_DATA_OP_DISABLE_IDLE",
+          "name": "pat_wgt_EXIT_DATA_OP_DISABLE_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_EXIT_DATA_OP_DISABLE_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_TEMP_PRECHARGE_PD",
+          "name": "pat_wgt_CHANGE_TEMP_PRECHARGE_PD",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_TEMP_PRECHARGE_PD",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PWRCYCLE_SEQ_PRECHARGE_PD",
+          "name": "pat_wgt_PWRCYCLE_SEQ_PRECHARGE_PD",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PWRCYCLE_SEQ_PRECHARGE_PD",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SET_2N_MODE_ACTIVE",
+          "name": "pat_wgt_SET_2N_MODE_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SET_2N_MODE_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CK_THIS_GROUP_MPSM_IDLE",
+          "name": "pat_wgt_RTT_CK_THIS_GROUP_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CK_THIS_GROUP_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ILLEGAL_ROW_SEQ_IDLE",
+          "name": "pat_wgt_ILLEGAL_ROW_SEQ_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ILLEGAL_ROW_SEQ_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RDA_NT_PD_ODT",
+          "name": "pat_wgt_RDA_NT_PD_ODT",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RDA_NT_PD_ODT",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRA_PARTIAL_NT_PD_ODT",
+          "name": "pat_wgt_WRA_PARTIAL_NT_PD_ODT",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRA_PARTIAL_NT_PD_ODT",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DES_ACTIVE_PD",
+          "name": "pat_wgt_DES_ACTIVE_PD",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DES_ACTIVE_PD",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PDE_ACTIVE",
+          "name": "pat_wgt_PDE_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PDE_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ACT_IDLE",
+          "name": "pat_wgt_ACT_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ACT_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PDE_ODT_MPSM_IDLE",
+          "name": "pat_wgt_PDE_ODT_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PDE_ODT_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ZQ_LATCH_IDLE",
+          "name": "pat_wgt_ZQ_LATCH_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ZQ_LATCH_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WR_PARTIAL_NT_PD_ODT",
+          "name": "pat_wgt_WR_PARTIAL_NT_PD_ODT",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WR_PARTIAL_NT_PD_ODT",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RDA_NT_MPSM_IDLE",
+          "name": "pat_wgt_RDA_NT_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RDA_NT_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CS_OTHER_GROUP_IDLE",
+          "name": "pat_wgt_RTT_CS_OTHER_GROUP_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CS_OTHER_GROUP_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRA_PARTIAL_ACTIVE",
+          "name": "pat_wgt_WRA_PARTIAL_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRA_PARTIAL_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PDA_SELECT_ID_MPSM_IDLE",
+          "name": "pat_wgt_PDA_SELECT_ID_MPSM_IDLE",
+          "default": "20.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PDA_SELECT_ID_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "20.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RD_NT_PD_ODT",
+          "name": "pat_wgt_RD_NT_PD_ODT",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RD_NT_PD_ODT",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DES_PRECHARGE_PD",
+          "name": "pat_wgt_DES_PRECHARGE_PD",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DES_PRECHARGE_PD",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CS_THIS_GROUP_IDLE",
+          "name": "pat_wgt_RTT_CS_THIS_GROUP_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CS_THIS_GROUP_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_TEMP_ACTIVE",
+          "name": "pat_wgt_CHANGE_TEMP_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_TEMP_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DQS_OSC_START_MPSM_IDLE",
+          "name": "pat_wgt_DQS_OSC_START_MPSM_IDLE",
+          "default": "20.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DQS_OSC_START_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "20.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RESET_SEQ_MPSM_IDLE",
+          "name": "pat_wgt_RESET_SEQ_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RESET_SEQ_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRR_NT_PD_ODT",
+          "name": "pat_wgt_MRR_NT_PD_ODT",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRR_NT_PD_ODT",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRR_NT_IGNORE_ACTIVE",
+          "name": "pat_wgt_MRR_NT_IGNORE_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRR_NT_IGNORE_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_CAI_MIR_IDLE",
+          "name": "pat_wgt_CHANGE_CAI_MIR_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_CAI_MIR_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CA_OTHER_GROUP_MPSM_IDLE",
+          "name": "pat_wgt_RTT_CA_OTHER_GROUP_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CA_OTHER_GROUP_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_TDLLK_TCCDL_IDLE",
+          "name": "pat_wgt_TDLLK_TCCDL_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_TDLLK_TCCDL_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ACT_CANCEL_ACTIVE",
+          "name": "pat_wgt_ACT_CANCEL_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ACT_CANCEL_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WR_PARTIAL_ACTIVE",
+          "name": "pat_wgt_WR_PARTIAL_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WR_PARTIAL_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RESET_SEQ_ACTIVE_PD",
+          "name": "pat_wgt_RESET_SEQ_ACTIVE_PD",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RESET_SEQ_ACTIVE_PD",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CA_THIS_GROUP_MPSM_IDLE",
+          "name": "pat_wgt_RTT_CA_THIS_GROUP_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CA_THIS_GROUP_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRW_CANCEL_MPSM_IDLE",
+          "name": "pat_wgt_MRW_CANCEL_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRW_CANCEL_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SRE_MPSM_IDLE",
+          "name": "pat_wgt_SRE_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SRE_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_TCK_IDLE",
+          "name": "pat_wgt_CHANGE_TCK_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_TCK_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRW_IGNORE_MPSM_IDLE",
+          "name": "pat_wgt_MRW_IGNORE_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRW_IGNORE_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_TIMESET_IDLE",
+          "name": "pat_wgt_CHANGE_TIMESET_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_TIMESET_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRW_IGNORE_ACTIVE",
+          "name": "pat_wgt_MRW_IGNORE_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRW_IGNORE_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WR_NT_ACTIVE",
+          "name": "pat_wgt_WR_NT_ACTIVE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WR_NT_ACTIVE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PRE_SB_ACTIVE",
+          "name": "pat_wgt_PRE_SB_ACTIVE",
+          "default": "20.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PRE_SB_ACTIVE",
+          "type": "enum",
+          "values": [
+            "20.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRPA_CANCEL_IDLE",
+          "name": "pat_wgt_WRPA_CANCEL_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRPA_CANCEL_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ACT_ACTIVE",
+          "name": "pat_wgt_ACT_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ACT_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_FIFO_TEST_SEQ_IDLE",
+          "name": "pat_wgt_FIFO_TEST_SEQ_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_FIFO_TEST_SEQ_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRR_NT_IDLE",
+          "name": "pat_wgt_MRR_NT_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRR_NT_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DLL_RESET_MPSM_IDLE",
+          "name": "pat_wgt_DLL_RESET_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DLL_RESET_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_EXIT_PDA_ENUM_PROG_IDLE",
+          "name": "pat_wgt_EXIT_PDA_ENUM_PROG_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_EXIT_PDA_ENUM_PROG_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RESET_SEQ_IDLE",
+          "name": "pat_wgt_RESET_SEQ_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RESET_SEQ_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SET_1N_MODE_MPSM_IDLE",
+          "name": "pat_wgt_SET_1N_MODE_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SET_1N_MODE_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRR_IDLE",
+          "name": "pat_wgt_MRR_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRR_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRPA_CANCEL_ACTIVE",
+          "name": "pat_wgt_WRPA_CANCEL_ACTIVE",
+          "default": "20.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRPA_CANCEL_ACTIVE",
+          "type": "enum",
+          "values": [
+            "20.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PDE_ODT_IDLE",
+          "name": "pat_wgt_PDE_ODT_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PDE_ODT_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PDX_PRECHARGE_PD",
+          "name": "pat_wgt_PDX_PRECHARGE_PD",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PDX_PRECHARGE_PD",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PWRCYCLE_SEQ_PDA_ENUM",
+          "name": "pat_wgt_PWRCYCLE_SEQ_PDA_ENUM",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PWRCYCLE_SEQ_PDA_ENUM",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DQS_OSC_STOP_ACTIVE",
+          "name": "pat_wgt_DQS_OSC_STOP_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DQS_OSC_STOP_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_VREF_CS_IDLE",
+          "name": "pat_wgt_VREF_CS_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_VREF_CS_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_EXIT_PDA_ENUM_PROG_PDA_ENUM",
+          "name": "pat_wgt_EXIT_PDA_ENUM_PROG_PDA_ENUM",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_EXIT_PDA_ENUM_PROG_PDA_ENUM",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WR_ACTIVE",
+          "name": "pat_wgt_WR_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WR_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WR_PARTIAL_NT_ACTIVE",
+          "name": "pat_wgt_WR_PARTIAL_NT_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WR_PARTIAL_NT_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_VREF_CA_ACTIVE",
+          "name": "pat_wgt_VREF_CA_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_VREF_CA_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_TEMP_SELF_REFRESH",
+          "name": "pat_wgt_CHANGE_TEMP_SELF_REFRESH",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_TEMP_SELF_REFRESH",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PWRCYCLE_SEQ_PD_ODT",
+          "name": "pat_wgt_PWRCYCLE_SEQ_PD_ODT",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PWRCYCLE_SEQ_PD_ODT",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_REFM_SB_IDLE",
+          "name": "pat_wgt_REFM_SB_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_REFM_SB_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PWRCYCLE_SEQ_IDLE",
+          "name": "pat_wgt_PWRCYCLE_SEQ_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PWRCYCLE_SEQ_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_REF_AB_IDLE",
+          "name": "pat_wgt_REF_AB_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_REF_AB_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SRX_SELF_REFRESH",
+          "name": "pat_wgt_SRX_SELF_REFRESH",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SRX_SELF_REFRESH",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DQS_OSC_STOP_MPSM_IDLE",
+          "name": "pat_wgt_DQS_OSC_STOP_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DQS_OSC_STOP_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ZQ_LATCH_MPSM_IDLE",
+          "name": "pat_wgt_ZQ_LATCH_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ZQ_LATCH_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CA_OTHER_GROUP_IDLE",
+          "name": "pat_wgt_RTT_CA_OTHER_GROUP_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CA_OTHER_GROUP_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_TDLLK_TCCDL_ACTIVE",
+          "name": "pat_wgt_TDLLK_TCCDL_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_TDLLK_TCCDL_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RDA_NT_ACTIVE",
+          "name": "pat_wgt_RDA_NT_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RDA_NT_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PDE_ODT_ACTIVE",
+          "name": "pat_wgt_PDE_ODT_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PDE_ODT_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_REF_SB_IDLE",
+          "name": "pat_wgt_REF_SB_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_REF_SB_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SET_RTT_PARK_IDLE",
+          "name": "pat_wgt_SET_RTT_PARK_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SET_RTT_PARK_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRW_IDLE",
+          "name": "pat_wgt_MRW_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRW_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_TCK_MPSM_IDLE",
+          "name": "pat_wgt_CHANGE_TCK_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_TCK_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DQS_OSC_START_ACTIVE",
+          "name": "pat_wgt_DQS_OSC_START_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DQS_OSC_START_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRP_CANCEL_ACTIVE",
+          "name": "pat_wgt_WRP_CANCEL_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRP_CANCEL_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRW_CANCEL_IDLE",
+          "name": "pat_wgt_MRW_CANCEL_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRW_CANCEL_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_BURST_READS_ACTIVE",
+          "name": "pat_wgt_BURST_READS_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_BURST_READS_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRPA_ACTIVE",
+          "name": "pat_wgt_WRPA_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRPA_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WR_NT_IDLE",
+          "name": "pat_wgt_WR_NT_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WR_NT_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRA_NT_MPSM_IDLE",
+          "name": "pat_wgt_WRA_NT_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRA_NT_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CK_OTHER_GROUP_ACTIVE",
+          "name": "pat_wgt_RTT_CK_OTHER_GROUP_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CK_OTHER_GROUP_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CS_TRAIN_IDLE",
+          "name": "pat_wgt_CS_TRAIN_IDLE",
+          "default": "15.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CS_TRAIN_IDLE",
+          "type": "enum",
+          "values": [
+            "15.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DLL_RESET_IDLE",
+          "name": "pat_wgt_DLL_RESET_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DLL_RESET_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WR_NT_PD_ODT",
+          "name": "pat_wgt_WR_NT_PD_ODT",
+          "default": "5.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WR_NT_PD_ODT",
+          "type": "enum",
+          "values": [
+            "5.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRP_CANCEL_IDLE",
+          "name": "pat_wgt_WRP_CANCEL_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRP_CANCEL_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRW_CANCEL_IGNORE_IDLE",
+          "name": "pat_wgt_MRW_CANCEL_IGNORE_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRW_CANCEL_IGNORE_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PRE_AB_IDLE",
+          "name": "pat_wgt_PRE_AB_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PRE_AB_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PDA_SELECT_ID_IDLE",
+          "name": "pat_wgt_PDA_SELECT_ID_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PDA_SELECT_ID_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRA_NT_ACTIVE",
+          "name": "pat_wgt_WRA_NT_ACTIVE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRA_NT_ACTIVE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PDA_ENUMERATE_ID_PDA_ENUM",
+          "name": "pat_wgt_PDA_ENUMERATE_ID_PDA_ENUM",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PDA_ENUMERATE_ID_PDA_ENUM",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_Y32A_MRR_IGNORE_IDLE",
+          "name": "pat_wgt_Y32A_MRR_IGNORE_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_Y32A_MRR_IGNORE_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RESET_SEQ_PRECHARGE_PD",
+          "name": "pat_wgt_RESET_SEQ_PRECHARGE_PD",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RESET_SEQ_PRECHARGE_PD",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_APPLY_VREF_RTT_MPSM_IDLE",
+          "name": "pat_wgt_APPLY_VREF_RTT_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_APPLY_VREF_RTT_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PWRCYCLE_SEQ_ACTIVE",
+          "name": "pat_wgt_PWRCYCLE_SEQ_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PWRCYCLE_SEQ_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RESET_SEQ_SELF_REFRESH",
+          "name": "pat_wgt_RESET_SEQ_SELF_REFRESH",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RESET_SEQ_SELF_REFRESH",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_TEMP_IDLE",
+          "name": "pat_wgt_CHANGE_TEMP_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_TEMP_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RESET_SEQ_PDA_ENUM",
+          "name": "pat_wgt_RESET_SEQ_PDA_ENUM",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RESET_SEQ_PDA_ENUM",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ZQ_CAL_START_MPSM_IDLE",
+          "name": "pat_wgt_ZQ_CAL_START_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ZQ_CAL_START_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CK_THIS_GROUP_IDLE",
+          "name": "pat_wgt_RTT_CK_THIS_GROUP_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CK_THIS_GROUP_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_REF_AB_ACTIVE",
+          "name": "pat_wgt_REF_AB_ACTIVE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_REF_AB_ACTIVE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_BURST_WRITES_ACTIVE",
+          "name": "pat_wgt_BURST_WRITES_ACTIVE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_BURST_WRITES_ACTIVE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SET_2N_MODE_MPSM_IDLE",
+          "name": "pat_wgt_SET_2N_MODE_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SET_2N_MODE_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SET_RTT_PARK_MPSM_IDLE",
+          "name": "pat_wgt_SET_RTT_PARK_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SET_RTT_PARK_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SET_DQS_RTT_PARK_IDLE",
+          "name": "pat_wgt_SET_DQS_RTT_PARK_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SET_DQS_RTT_PARK_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CS_LOW_SELF_REFRESH",
+          "name": "pat_wgt_CS_LOW_SELF_REFRESH",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CS_LOW_SELF_REFRESH",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_REFM_AB_IDLE",
+          "name": "pat_wgt_REFM_AB_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_REFM_AB_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PRE_IDLE",
+          "name": "pat_wgt_PRE_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PRE_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ZQ_CAL_START_IDLE",
+          "name": "pat_wgt_ZQ_CAL_START_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ZQ_CAL_START_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CS_THIS_GROUP_ACTIVE",
+          "name": "pat_wgt_RTT_CS_THIS_GROUP_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CS_THIS_GROUP_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RD_ACTIVE",
+          "name": "pat_wgt_RD_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RD_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRW_MPSM_IDLE",
+          "name": "pat_wgt_MRW_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRW_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_APPLY_VREF_RTT_IDLE",
+          "name": "pat_wgt_APPLY_VREF_RTT_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_APPLY_VREF_RTT_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PRE_SB_IDLE",
+          "name": "pat_wgt_PRE_SB_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PRE_SB_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_TIMESET_MPSM_IDLE",
+          "name": "pat_wgt_CHANGE_TIMESET_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_TIMESET_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DES_MPSM_IDLE",
+          "name": "pat_wgt_DES_MPSM_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DES_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SET_2N_MODE_IDLE",
+          "name": "pat_wgt_SET_2N_MODE_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SET_2N_MODE_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RD_NT_IDLE",
+          "name": "pat_wgt_RD_NT_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RD_NT_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRA_ACTIVE",
+          "name": "pat_wgt_WRA_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRA_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_REF_SB_ACTIVE",
+          "name": "pat_wgt_REF_SB_ACTIVE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_REF_SB_ACTIVE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DES_ACTIVE",
+          "name": "pat_wgt_DES_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DES_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_TEMP_PD_ODT",
+          "name": "pat_wgt_CHANGE_TEMP_PD_ODT",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_TEMP_PD_ODT",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CS_THIS_GROUP_MPSM_IDLE",
+          "name": "pat_wgt_RTT_CS_THIS_GROUP_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CS_THIS_GROUP_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_CHANGE_TEMP_ACTIVE_PD",
+          "name": "pat_wgt_CHANGE_TEMP_ACTIVE_PD",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_CHANGE_TEMP_ACTIVE_PD",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CK_OTHER_GROUP_IDLE",
+          "name": "pat_wgt_RTT_CK_OTHER_GROUP_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CK_OTHER_GROUP_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CS_OTHER_GROUP_ACTIVE",
+          "name": "pat_wgt_RTT_CS_OTHER_GROUP_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CS_OTHER_GROUP_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRW_IGNORE_IDLE",
+          "name": "pat_wgt_MRW_IGNORE_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRW_IGNORE_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PANIC_REF_IDLE",
+          "name": "pat_wgt_PANIC_REF_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PANIC_REF_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRA_PARTIAL_NT_ACTIVE",
+          "name": "pat_wgt_WRA_PARTIAL_NT_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRA_PARTIAL_NT_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_VREF_CA_IDLE",
+          "name": "pat_wgt_VREF_CA_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_VREF_CA_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRR_NT_IGNORE_IDLE",
+          "name": "pat_wgt_MRR_NT_IGNORE_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRR_NT_IGNORE_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRA_PARTIAL_NT_MPSM_IDLE",
+          "name": "pat_wgt_WRA_PARTIAL_NT_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRA_PARTIAL_NT_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ENTER_PDA_ENUM_PROG_MPSM_IDLE",
+          "name": "pat_wgt_ENTER_PDA_ENUM_PROG_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ENTER_PDA_ENUM_PROG_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_WRA_PARTIAL_NT_IDLE",
+          "name": "pat_wgt_WRA_PARTIAL_NT_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_WRA_PARTIAL_NT_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_EXIT_PDA_ENUM_PROG_MPSM_IDLE",
+          "name": "pat_wgt_EXIT_PDA_ENUM_PROG_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_EXIT_PDA_ENUM_PROG_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRW_CANCEL_IGNORE_ACTIVE",
+          "name": "pat_wgt_MRW_CANCEL_IGNORE_ACTIVE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRW_CANCEL_IGNORE_ACTIVE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ACT_CANCEL_IDLE",
+          "name": "pat_wgt_ACT_CANCEL_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ACT_CANCEL_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PRE_ACTIVE",
+          "name": "pat_wgt_PRE_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PRE_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PRE_AB_ACTIVE",
+          "name": "pat_wgt_PRE_AB_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PRE_AB_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_SET_1N_MODE_ACTIVE",
+          "name": "pat_wgt_SET_1N_MODE_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_SET_1N_MODE_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MRW_CANCEL_IGNORE_MPSM_IDLE",
+          "name": "pat_wgt_MRW_CANCEL_IGNORE_MPSM_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MRW_CANCEL_IGNORE_MPSM_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_PDE_IDLE",
+          "name": "pat_wgt_PDE_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_PDE_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RDA_NT_IDLE",
+          "name": "pat_wgt_RDA_NT_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RDA_NT_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_RTT_CA_THIS_GROUP_ACTIVE",
+          "name": "pat_wgt_RTT_CA_THIS_GROUP_ACTIVE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_RTT_CA_THIS_GROUP_ACTIVE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_MPSM_ENTER_EXIT_IDLE",
+          "name": "pat_wgt_MPSM_ENTER_EXIT_IDLE",
+          "default": "1.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_MPSM_ENTER_EXIT_IDLE",
+          "type": "enum",
+          "values": [
+            "1.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_ZQ_CAL_START_ACTIVE",
+          "name": "pat_wgt_ZQ_CAL_START_ACTIVE",
+          "default": "5.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_ZQ_CAL_START_ACTIVE",
+          "type": "enum",
+          "values": [
+            "5.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DES_PD_ODT",
+          "name": "pat_wgt_DES_PD_ODT",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DES_PD_ODT",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        },
+        {
+          "label": "pat_wgt_DQS_OSC_START_IDLE",
+          "name": "pat_wgt_DQS_OSC_START_IDLE",
+          "default": "10.0",
+          "key": "RewardPredictor.knob_values.pat_wgt_DQS_OSC_START_IDLE",
+          "type": "enum",
+          "values": [
+            "10.0",
+            ""
+          ]
+        }
+      ],
+      "knobs_file": null,
+      "mode": "random",
+      "num_knobs_to_generate": 400,
+      "num_knobs_to_perturb": 20,
+      "num_normalized": 0,
+      "num_rand_iterations": 100000,
+      "reward_column": "DDR5_coverage cov",
+      "reward_column_label": [
+        "DDR5_coverage cov"
+      ],
+      "reward_stat": null,
+      "save_images": true,
+      "scale": false,
+      "sigma": 2,
+      "use_VerifAI": false,
+      "use_special_function": false
+    },
+    "batch_size": 100,
+    "column_names": null,
+    "dataset_name": "y52k_Jul1_DUT",
+    "estimator_type": "DNN",
+    "excluded_columns": [
+      "Functional_Sections cov",
+      "Functional_Sections delta cov",
+      "1_Deep_Commands cov",
+      "1_Deep_Commands delta cov",
+      "2_Deep_Commands_Same_Rank cov",
+      "2_Deep_Commands_Same_Rank delta cov",
+      "DDR5_coverage delta cov",
+      "simtime",
+      "run_time",
+      "turnaround_time",
+      "pertest DDR5_vplan cov"
+    ],
+    "feature_engineering": {
+      "collection": "y52k_Jul1_DUT",
+      "db": "sandeep"
+    },
+    "randomized_knob_patterns": "pat_wgt",
+    "randomized_knobs": "speed_grades",
+    "grid_search": false,
+    "header": 0,
+    "images_dir": "images",
+    "kernel": "TF",
+    "label_name": "DDR5_coverage cov",
+    "model_dir": "models",
+    "result_mongo_uri": "mongodb://localhost:27017/sandeep/Optimization",
+    "scale": false,
+    "Project": "y52k:x8",
+    "training_data_filename": "mongodb://localhost:27017/sandeep/y52k_Jul1_DUT",
+    "training_num_epochs": 2000,
+    "algorithm": "distoptimizer"
+  }
+}
