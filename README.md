@@ -1,4 +1,4 @@
-# nanoGPT Explained by TestGuru AI
+# nanoGPT Explained by TestGuru AI: https://testguru.ai
 # nanoGPT is code created by Andrej Karpathy @karpathy: https://github.com/karpathy/nanoGPT
 
 
