@@ -1,6 +1,9 @@
 # nanoGPT Explained by TestGuru AI: https://testguru.ai
 # nanoGPT is code created by Andrej Karpathy @karpathy: https://github.com/karpathy/nanoGPT
 
+![TestGuru-NanoGPT](https://github.com/testguruai/nanoGPT/assets/132442834/b0d2734a-7496-48a6-a9eb-b91418a170c9)
+
+
 
 This code is a training script for a GPT-2 language model. It is designed to be run on a single GPU in debug mode, or in a larger training run with distributed data parallel (DDP).
 -------------------------
